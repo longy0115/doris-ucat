@@ -13,8 +13,8 @@ class Users extends Model {
     if ($list) {
       if ($list['password'] == $password) {
         $result = ['Data'=>$list,'Code'=>1,'Message'=>''];
-        session('name', $username);
-        session('id', $list['id']);
+        cache('name', $username);
+        cache('id', $list['id']);
       } else {
         $result = ['Code'=>0,'Message'=>'用户名或密码错误'];
       }

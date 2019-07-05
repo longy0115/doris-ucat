@@ -55,6 +55,8 @@ class Actives extends Model {
     // }
     
     $type = input('type');
+    
+    halt( cache('id'));
     $listData = ['title'=>input('title'), 'user_id'=>session('id')];
     $detailData = ['address'=>input('address'), 'free'=>input('free'), 'start_date'=>input('start_date'), 'end_date'=>input('end_date'),'apply_end_date'=>input('apply_end_date'), 'position'=>input('position'),'enter_number'=>input('enter_number'),'content'=>input('content')];
     $flag = false;
