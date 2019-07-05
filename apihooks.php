@@ -9,7 +9,7 @@ $path = "/home/dnmp/www/doris-ucat";
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
 $data[ 'signature']=$signature;
 if ($signature) {
-    $hash = "sha1=" . hash_hmac('sha1', $HTTP_RAW_POST_DATA, $secret);
+    $hash = "sha1=" . hash_hmac('sha1', file_get_contents("php://input"), $secret);
     $data[ 'hash'] = $hash;
     if (strcmp($signature, $hash) == 0) {
         print_r($data);
