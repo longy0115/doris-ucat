@@ -17,5 +17,6 @@ if ($signature) {
         exit();
     }
 }
+$data['succ']='error';
 print_r($data);
 http_response_code(404);
