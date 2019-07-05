@@ -7,7 +7,7 @@ class Index
     {
         $id=input('id');
         session('api-id',$id);
-        return 'doris-api-test';
+        halt($id);
     }
 
     public function test(){
