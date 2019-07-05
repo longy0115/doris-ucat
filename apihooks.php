@@ -1,4 +1,8 @@
 <?php
+$path = "/home/dnmp/www/doris-ucat";
+$cmd = "cd $path && git pull origin master";
+exec("cd $path && git pull origin master");
+exit(111);
 go();
 function go()
 {
@@ -15,6 +19,7 @@ function go()
             set_time_limit(3 * 60); //最大过期时间3分钟
             $path = "/home/dnmp/www/doris-ucat";
             $cmd = "cd $path && git pull origin master";
+            exec("cd $path && git pull origin master");
             $res=exec($cmd,$output,$status);
 
             $res_log = '-------------------------' . PHP_EOL;
