@@ -211,9 +211,9 @@ return [
         // 驱动方式 支持redis memcache memcached
         'type'           => 'redis',
         //域名
-        'host'           => '127.0.0.1',
+        'host'           => 'dnmp-redis',
         // redis端口
-        'port'       => 6379,
+        'port'       => 63789,
         // 密码
         'password'   => '',
         // 是否自动开启 SESSION
