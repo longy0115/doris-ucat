@@ -7,11 +7,15 @@ $secret = "doris-ucat";
 $path = "/home/dnmp/www/doris-ucat";
 // Headers deliveried from GitHub
 $signature = $_SERVER['HTTP_X_HUB_SIGNATURE'];
+$data[ 'signature']=$signature;
 if ($signature) {
     $hash = "sha1=" . hash_hmac('sha1', $HTTP_RAW_POST_DATA, $secret);
+    $data[ 'hash'] = $hash;
     if (strcmp($signature, $hash) == 0) {
-        echo shell_exec("cd {$path} && /usr/bin/git reset --hard origin/master && /usr/bin/git clean -f && /usr/bin/git pull 2>&1");
+        print_r($data);
+        echo shell_exec("cd {$path}  && git pull origin master 2>&1");
         exit();
     }
 }
+print_r($data);
 http_response_code(404);
