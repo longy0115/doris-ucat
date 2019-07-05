@@ -209,7 +209,13 @@ return [
         // SESSION 前缀
         'prefix'         => 'think',
         // 驱动方式 支持redis memcache memcached
-        'type'           => '',
+        'type'           => 'redis',
+        //域名
+        'host'           => '127.0.0.1',
+        // redis端口
+        'port'       => 6379,
+        // 密码
+        'password'   => '',
         // 是否自动开启 SESSION
         'auto_start'     => true,
     ],

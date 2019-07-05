@@ -23,6 +23,9 @@ use think\Route;
 // 注册路由到index模块的News控制器的read操作
 Route::get('new','News/read'); // 定义GET请求路由规则
 
+Route::get('/', 'Index/index'); //首页
+Route::get('test', 'Index/test'); //test 
+
 // 旅游
 Route::get('travels','Actives/getTravels'); // 定义GET请求路由规则
 Route::get('travel_detail/:id','Actives/getTravelDetail');
