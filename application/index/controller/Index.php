@@ -5,6 +5,6 @@ class Index
 {
     public function index()
     {
-        return 'doris-api';
+        return 'doris-api-test';
     }
 }
