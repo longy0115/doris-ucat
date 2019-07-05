@@ -213,7 +213,7 @@ return [
         //域名
         'host'           => 'dnmp-redis',
         // redis端口
-        'port'       => 63789,
+        'port'       => 6379,
         // 密码
         'password'   => '',
         // 是否自动开启 SESSION
