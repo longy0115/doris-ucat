@@ -14,7 +14,7 @@ function go()
 
             set_time_limit(3 * 60); //最大过期时间3分钟
             $path = "/home/dnmp/www/doris-ucat";
-            $cmd = "cd $path && sudo git pull origin master";
+            $cmd = "cd $path && git pull origin master";
             $res = doShell($cmd);
             print_r($res); // 主要打印结果给github记录查看，自己测试时查看
 
@@ -46,6 +46,7 @@ function doShell($cmd, $cwd = null)
         $status = proc_close($proc); // 释放proc
     }
     $data = array(
+        'cmd'    =>$cmd,
         'stdout' => $stdout, // 标准输出
         'stderr' => $stderr, // 错误输出
         'retval' => $status, // 返回值
