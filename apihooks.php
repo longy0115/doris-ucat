@@ -15,8 +15,17 @@ function go()
             set_time_limit(3 * 60); //最大过期时间3分钟
             $path = "/home/dnmp/www/doris-ucat";
             $cmd = "cd $path && git pull origin master";
-            $res = doShell($cmd);
-            print_r($res); // 主要打印结果给github记录查看，自己测试时查看
+            $res=exec($cmd,$output,$status);
+
+            $res_log = '-------------------------' . PHP_EOL;
+            $res_log .= json_encode($output) . '--';
+            $res_log .= $cmd;
+            $res_log .= '--' . $status . '--';
+            $res_log .= $res . PHP_EOL;
+            file_put_contents("apihooks.txt", $res_log, FILE_APPEND);//追加写入
+            print_r($res);
+            // $res = doShell($cmd);
+            // print_r($res); // 主要打印结果给github记录查看，自己测试时查看
 
         }
     }
