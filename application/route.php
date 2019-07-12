@@ -42,3 +42,6 @@ Route::get('post_active','Actives/postActive');
 //登陆 注册
 Route::post('login','Users/login');
 Route::post('register','Users/register');
+
+//微信公众号
+Route::get('checkWechat', 'Wechat/checkToken');

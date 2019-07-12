@@ -1,0 +1,47 @@
+<?php
+
+namespace app\index\controller;
+
+use think\controller;
+
+class Wechat extends Controller
+{
+    public function index()
+    {
+        var_dump(config('wx_info_test'));
+        halt('微信公众号');
+    }
+
+    //验证入口
+    public function checkToken()
+    {
+        $echoStr = $_GET["echostr"];
+        if ($this->checkSignature()) {
+            echo $echoStr;
+            exit;
+        }
+    }
+
+    /**
+     * 用于验证是否是微信服务器发来的消息
+     * @return bool
+     */
+    private function checkSignature()
+    {
+        $signature = $_GET["signature"];
+        $timestamp = $_GET["timestamp"];
+        $nonce = $_GET["nonce"];
+
+        $token = 'weixintest';
+        $tmpArr = array($token, $timestamp, $nonce);
+        sort($tmpArr);
+        $tmpStr = implode($tmpArr);
+        $tmpStr = sha1($tmpStr);
+
+        if ($tmpStr == $signature) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
