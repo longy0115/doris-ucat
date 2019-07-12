@@ -2,9 +2,7 @@
 
 namespace app\index\controller;
 
-use think\controller;
-
-class Wechat extends Controller
+class Wechat 
 {
     public function index()
     {
