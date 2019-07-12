@@ -7,16 +7,6 @@ class Wechat
     public function index()
     {
         //var_dump(config('wx_info_test.token'));
-        $tmp=cache('tmpArr');
-        $token= cache('token');
-        $signature=cache('signature');
-        $tmpStr=cache('tmpStr');
-        $echoStr = cache('echoStr');
-        var_dump($tmp);
-        var_dump($tmpStr);
-        var_dump($signature);
-        var_dump($echoStr);
-        var_dump($token);
         halt('微信公众号');
     }
 
@@ -43,13 +33,9 @@ class Wechat
         
         $token = config('wx_info_test.token');
         $tmpArr =array($timestamp, $nonce, $token);
-        cache('tmpArr', $tmpArr);
-        cache('token', $token);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
-        cache('signature', $signature);
-        cache('tmpStr', $tmpStr);
         if ($tmpStr == $signature) {
             return true;
         } else {
