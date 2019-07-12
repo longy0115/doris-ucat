@@ -30,7 +30,7 @@ class Wechat
         $timestamp = $_GET["timestamp"];
         $nonce = $_GET["nonce"];
 
-        $token = 'weixintest';
+        $token = config('wx_info_test.token');
         $tmpArr = array($token, $timestamp, $nonce);
         sort($tmpArr);
         $tmpStr = implode($tmpArr);
