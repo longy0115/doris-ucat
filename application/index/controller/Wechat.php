@@ -42,10 +42,10 @@ class Wechat
         $nonce = input("nonce");
         
         $token = config('wx_info_test.token');
-        $tmpArr = array($token, $timestamp, $nonce);
+        $tmpArr =array($timestamp, $nonce, $token);
         cache('tmpArr', $tmpArr);
         cache('token', $token);
-        sort($tmpArr);
+        sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
         cache('signature', $signature);
