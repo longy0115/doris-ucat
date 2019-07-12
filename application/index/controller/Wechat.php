@@ -9,7 +9,13 @@ class Wechat
         var_dump(config('wx_info_test.token'));
         $tmp=cache('tmpArr');
         $token= cache('token');
+        $signature=cache('signature');
+        $tmpStr=cache('tmpStr');
+        $echoStr = cache('echoStr');
         print_r($tmp);
+        print_r($tmpStr);
+        print_r($signature);
+        print_r($echoStr);
         halt($token);
         halt('微信公众号');
     }
@@ -17,7 +23,8 @@ class Wechat
     //验证入口
     public function checkToken()
     {
-        $echoStr = $_GET["echostr"];
+        $echoStr = input("echostr");
+        cache('echoStr', $echoStr);
         if ($this->checkSignature()) {
             echo $echoStr;
             exit;
@@ -41,7 +48,8 @@ class Wechat
         sort($tmpArr);
         $tmpStr = implode($tmpArr);
         $tmpStr = sha1($tmpStr);
-
+        cache('signature', $signature);
+        cache('tmpStr', $tmpStr);
         if ($tmpStr == $signature) {
             return true;
         } else {
