@@ -6,17 +6,17 @@ class Wechat
 {
     public function index()
     {
-        var_dump(config('wx_info_test.token'));
+        //var_dump(config('wx_info_test.token'));
         $tmp=cache('tmpArr');
         $token= cache('token');
         $signature=cache('signature');
         $tmpStr=cache('tmpStr');
         $echoStr = cache('echoStr');
-        print_r($tmp);
-        print_r($tmpStr);
-        print_r($signature);
-        print_r($echoStr);
-        halt($token);
+        var_dump($tmp);
+        var_dump($tmpStr);
+        var_dump($signature);
+        var_dump($echoStr);
+        var_dump($token);
         halt('微信公众号');
     }
 
