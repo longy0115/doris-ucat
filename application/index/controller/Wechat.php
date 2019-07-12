@@ -6,7 +6,7 @@ class Wechat
 {
     public function index()
     {
-        var_dump(config('wx_info_test'));
+        var_dump(config('wx_info_test.token'));
         halt('微信公众号');
     }
 
