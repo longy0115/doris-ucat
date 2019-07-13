@@ -2,12 +2,19 @@
 
 namespace app\index\controller;
 
+use service\WechatService;
+
+/**
+ * 微信服务器  验证控制器
+ * Class Wechat
+ */
+
 class Wechat 
 {
     public function index()
     {
-        //var_dump(config('wx_info_test.token'));
-        halt('微信公众号');
+        ob_clean();
+        WechatService::serve();
     }
 
     //验证入口
