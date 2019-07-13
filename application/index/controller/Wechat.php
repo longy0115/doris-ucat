@@ -20,12 +20,15 @@ class Wechat
     //验证入口
     public function checkToken()
     {
-        $echoStr = input("echostr");
-        cache('echoStr', $echoStr);
-        if ($this->checkSignature()) {
-            echo $echoStr;
-            exit;
-        }
+        ob_clean();
+        WechatService::serve();
+
+        // $echoStr = input("echostr");
+        // cache('echoStr', $echoStr);
+        // if ($this->checkSignature()) {
+        //     echo $echoStr;
+        //     exit;
+        // }
     }
 
     /**
