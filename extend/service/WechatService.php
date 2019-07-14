@@ -44,14 +44,16 @@ class WechatService
     public static function send(){
         $wechat = self::application(true);
 
-        $wechat->server->push(function ($message) {
-            return "您好！欢迎使用 EasyWeChat!";
+        $server = $wechat->server;
+        $user = $wechat->user;
+
+        $server->setMessageHandler(function ($message) use ($user) {
+            $fromUser = $user->get($message->FromUserName);
+
+            return "{$fromUser->nickname} 您好！欢迎关注 overtrue!";
         });
 
-        $response = $wechat->server->serve();
-
-        // 将响应输出
-        exit($response->send());
+        $server->serve()->send();
 
     }
 
