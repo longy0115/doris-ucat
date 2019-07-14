@@ -3,7 +3,7 @@
 namespace app\index\controller;
 
 use service\WechatService;
-
+use app\wechat\model\WechatReply;
 /**
  * 微信服务器  验证控制器
  * Class Wechat
@@ -13,15 +13,16 @@ class Wechat
 {
     public function index()
     {
-        halt('wechat');
+
+        halt(cache('all'));
     }
 
     //weixin
     public function checkToken()
     {
         ob_clean();
-        WechatService::textMessage("hello");
-        
+        cache("all",input());
+        return WechatReply::reply("doris");
     }
 
     /**
