@@ -3,7 +3,6 @@
 namespace app\index\controller;
 
 use service\WechatService;
-use app\wechat\model\WechatReply;
 /**
  * 微信服务器  验证控制器
  * Class Wechat
@@ -21,8 +20,7 @@ class Wechat
     public function checkToken()
     {
         ob_clean();
-        cache("all",input('code'));
-        exit(WechatReply::reply("doris"));
+        WechatService::serve();
     }
 
     /**
