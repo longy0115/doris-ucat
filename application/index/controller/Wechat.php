@@ -20,8 +20,8 @@ class Wechat
     public function checkToken()
     {
         ob_clean();
-       $res=WechatService::send();
-       dump($res);
+       WechatService::send();
+       
     }
 
     /**
