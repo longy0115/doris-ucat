@@ -3,7 +3,7 @@
 namespace app\index\controller;
 
 use service\WechatService;
-
+use EasyWeChat\Factory;
 /**
  * 微信服务器  验证控制器
  * Class Wechat
@@ -19,8 +19,17 @@ class Wechat
     //weixin
     public function checkToken()
     {
-        ob_clean();
-       WechatService::send();
+        $config=config('wechat_config');
+        $app = Factory::officialAccount($config);
+
+        $app->server->push(function ($message) {
+            return "您好！欢迎使用 EasyWeChat!";
+        });
+
+        $response = $app->server->serve();
+
+        // 将响应输出
+        $response->send();
        
     }
 
