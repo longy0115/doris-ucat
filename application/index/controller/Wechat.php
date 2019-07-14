@@ -20,7 +20,7 @@ class Wechat
     public function checkToken()
     {
         ob_clean();
-        $menu=WechatService::menuService();
+        $menu=WechatService::textMessage("hello");
         dump($menu);
     }
 
