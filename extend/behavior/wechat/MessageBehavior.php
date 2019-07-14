@@ -7,7 +7,7 @@
 
 namespace behavior\wechat;
 
-
+use app\wechat\model\WechatReply;
 use app\index\model\WechatMessage;
 use app\index\model\WechatUser;
 use service\HookService;

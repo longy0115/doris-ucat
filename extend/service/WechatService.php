@@ -38,19 +38,6 @@ class WechatService
         return self::$instance;
     }
 
-    /**
-     * 回复信息
-     */
-    public static function send(){
-        $wechat = self::application(true);
-        $server = $wechat->server;
-
-        $server->push(function ($message) {
-            return 'hello,world';
-        });
-        $server->serve()->send();
-    }
-
     public static function serve()
     {
         $wechat = self::application(true);
