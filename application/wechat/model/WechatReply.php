@@ -5,7 +5,7 @@
  * @day: 2017/11/22
  */
 
-namespace app\admin\model\wechat;
+namespace app\wechat\model;
 
 use traits\ModelTrait;
 use basic\ModelBasic;

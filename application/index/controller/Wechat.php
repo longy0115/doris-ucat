@@ -21,8 +21,8 @@ class Wechat
     public function checkToken()
     {
         ob_clean();
-        cache("all",input());
-        return WechatReply::reply("doris");
+        cache("all",input('code'));
+        exit(WechatReply::reply("doris"));
     }
 
     /**
