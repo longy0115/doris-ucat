@@ -43,7 +43,7 @@ class WechatService
      */
     public static function send(){
         $wechat = self::application(true);
-
+        return $wechat;
         $server = $wechat->server;
         $user = $wechat->user;
 
