@@ -38,6 +38,23 @@ class WechatService
         return self::$instance;
     }
 
+    /**
+     * 回复信息
+     */
+    public static function send(){
+        $wechat = self::application(true);
+
+        $wechat->server->push(function ($message) {
+            return "您好！欢迎使用 EasyWeChat!";
+        });
+
+        $response = $wechat->server->serve();
+
+        // 将响应输出
+        exit($response->send());
+
+    }
+
     public static function serve()
     {
         $wechat = self::application(true);

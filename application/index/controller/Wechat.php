@@ -13,22 +13,26 @@ class Wechat
 {
     public function index()
     {
-        ob_clean();
-        WechatService::serve();
+        halt('wechat');
     }
 
-    //验证入口
+    //weixin
     public function checkToken()
     {
         ob_clean();
-        WechatService::serve();
+        WechatService::send();
+    }
 
-        // $echoStr = input("echostr");
-        // cache('echoStr', $echoStr);
-        // if ($this->checkSignature()) {
-        //     echo $echoStr;
-        //     exit;
-        // }
+    /**
+     * 微信服务器  验证
+     */
+    public function valid(){
+        $echoStr = input("echostr");
+        cache('echoStr', $echoStr);
+        if ($this->checkSignature()) {
+            echo $echoStr;
+            exit;
+        }
     }
 
     /**
