@@ -8,8 +8,8 @@
 namespace behavior\wechat;
 
 use app\wechat\model\WechatReply;
-use app\index\model\WechatMessage;
-use app\index\model\WechatUser;
+use app\wechat\model\WechatMessage;
+use app\wechat\model\WechatUser;
 use service\HookService;
 use service\QrcodeService;
 

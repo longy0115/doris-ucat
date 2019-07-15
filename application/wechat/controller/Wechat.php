@@ -1,6 +1,6 @@
 <?php
 
-namespace app\index\controller;
+namespace app\wechat\controller;
 
 use service\WechatService;
 /**
@@ -17,7 +17,7 @@ class Wechat
     }
 
     //weixin
-    public function checkToken()
+    public function reply()
     {
         if (isset(input['echostr'])) {     //验证微信
             $this->valid();

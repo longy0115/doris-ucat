@@ -5,7 +5,7 @@
  * @day: 2017/12/14
  */
 
-namespace app\index\model;
+namespace app\wechat\model;
 
 use basic\ModelBasic;
 use service\UtilService;

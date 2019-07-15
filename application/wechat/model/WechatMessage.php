@@ -5,12 +5,12 @@
  * @day: 2017/11/28
  */
 
-namespace app\index\model;
+namespace app\wechat\model;
 
 use think\Cache;
 use traits\ModelTrait;
 use basic\ModelBasic;
-use app\index\model\WechatUser as UserModel;
+use app\wechat\model\WechatUser as UserModel;
 
 /**
  * 微信用户行为记录  model
