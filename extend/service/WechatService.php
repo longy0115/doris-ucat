@@ -51,6 +51,7 @@ class WechatService
         Log::info('日志信息start-----------');
         $wechat = self::application(true);
         $server = $wechat->server;
+        halt($server);
         self::hook($server);
         $response = $server->serve();
         Log::info('日志信息end-----------');
