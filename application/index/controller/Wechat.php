@@ -19,8 +19,11 @@ class Wechat
     //weixin
     public function checkToken()
     {
-        ob_clean();
-        WechatService::serve();
+        if (isset(input['echostr'])) {     //验证微信
+            $this->valid();
+        } else {                     //回复消息
+            
+        }
     }
 
     /**
@@ -28,7 +31,6 @@ class Wechat
      */
     public function valid(){
         $echoStr = input("echostr");
-        cache('echoStr', $echoStr);
         if ($this->checkSignature()) {
             echo $echoStr;
             exit;
