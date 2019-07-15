@@ -20,10 +20,10 @@ class Wechat
     //weixin
     public function reply()
     {
-        Log::INFO("reply");
         if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
+            halt(input('openid'));
             WechatService::serve();
         }
     }
