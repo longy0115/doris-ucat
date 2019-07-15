@@ -13,13 +13,14 @@ class Wechat
 {
     public function index()
     {
-
-        halt('微信测试');
+        echo cache('openid');
+            halt('微信测试');
     }
 
     //weixin
     public function reply()
     {
+        cache('openid',input('openid'));
         if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
