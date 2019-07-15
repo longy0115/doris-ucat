@@ -26,7 +26,14 @@ class WechatService
 
     public static function options()
     {
-        $config=config('wechat_config');
+        $config = [
+            'app_id' => config('wechat_config.app_id'),
+            'secret' => config('wechat_config.secret'),
+            'token' => config('wechat_config.token'),
+            'guzzle' => [
+                'timeout' => 10.0, // 超时时间（秒）
+            ],
+        ];
         return $config;
     }
 
