@@ -13,7 +13,7 @@ class Wechat
     public function index()
     {
 
-        halt(cache('all'));
+        halt('微信测试');
     }
 
     //weixin
