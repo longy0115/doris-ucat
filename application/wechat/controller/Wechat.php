@@ -3,6 +3,7 @@
 namespace app\wechat\controller;
 
 use service\WechatService;
+use think\Log;
 /**
  * 微信服务器  验证控制器
  * Class Wechat
@@ -19,7 +20,9 @@ class Wechat
     //weixin
     public function reply()
     {
+        Log::INFO("reply");
         $echostr=input("echostr");
+        Log::INFO("echo-----".echostr);
         if (isset($echostr)) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
