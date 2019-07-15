@@ -19,6 +19,7 @@ use EasyWeChat\Message\Voice;
 use EasyWeChat\Payment\Order;
 use EasyWeChat\Server\Guard;
 use think\Url;
+use think\Log;
 
 class WechatService
 {
@@ -26,15 +27,15 @@ class WechatService
 
     public static function options()
     {
-        $config = [
-            'app_id' => config('wechat_config.app_id'),
-            'secret' => config('wechat_config.secret'),
-            'token' => config('wechat_config.token'),
-            'guzzle' => [
-                'timeout' => 10.0, // 超时时间（秒）
-            ],
-        ];
-        return $config;
+        // $config = [
+        //     'app_id' => config('wechat_config.app_id'),
+        //     'secret' => config('wechat_config.secret'),
+        //     'token' => config('wechat_config.token'),
+        //     'guzzle' => [
+        //         'timeout' => 10.0, // 超时时间（秒）
+        //     ],
+        // ];
+        return config('wechat_config');
     }
 
 
@@ -47,10 +48,12 @@ class WechatService
 
     public static function serve()
     {
+        Log::info('日志信息start-----------');
         $wechat = self::application(true);
         $server = $wechat->server;
         self::hook($server);
         $response = $server->serve();
+        Log::info('日志信息end-----------');
         exit($response->getContent());
     }
 
@@ -63,6 +66,7 @@ class WechatService
         $server->setMessageHandler(function($message){
             $behavior = MessageBehavior::class;
             HookService::beforeListen('wechat_message',$message,null,true,$behavior);
+            Log::info('MsgType------'. $message->MsgType);
             switch ($message->MsgType){
                 case 'event':
                     switch (strtolower($message->Event)){
