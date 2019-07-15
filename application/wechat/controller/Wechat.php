@@ -21,12 +21,9 @@ class Wechat
     public function reply()
     {
         Log::INFO("reply");
-        $echostr=input("echostr");
-        Log::INFO("echo-----".echostr);
-        if (isset($echostr)) {     //验证微信
+        if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
-            halt(111111);
             WechatService::serve();
         }
     }
