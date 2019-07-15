@@ -21,7 +21,7 @@ class Wechat
     {
         if (isset(input['echostr'])) {     //验证微信
             $this->valid();
-        } else {                     //回复消息
+        } else { //回复消息 其他操作
             
         }
     }
