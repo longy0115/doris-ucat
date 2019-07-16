@@ -65,7 +65,7 @@ class Wechat
                     [
                         "type" => "view",
                         "name" => "doris",
-                        "url"  => "http://doris.ucat.club/wechat/getMenu"
+                        "url"  => "http://wx.ucat.club/wx-home.html"
                     ]
                 ],
             ],
