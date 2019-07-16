@@ -45,4 +45,5 @@ Route::post('register','Users/register');
 
 //微信公众号
 Route::get('wechat', 'wechat/Wechat/index');
-Route::get('reply', 'wechat/Wechat/reply');//验证入口
+Route::get('reply', 'wechat/Wechat/reply'); //验证入口
+Route::get('wechat/Wechat/reply', 'wechat/Wechat/reply');//验证入口
