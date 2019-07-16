@@ -7,7 +7,7 @@ class Actives extends Model {
   // 旅游
   public function getTravels () {
     $list = Db::table('travels')->select();
-    halt(session('id'));
+    // var_dump($list);
     return $list;
   }
   public function getMyTravels () {
@@ -55,9 +55,7 @@ class Actives extends Model {
     // }
     
     $type = input('type');
-    
-    halt( cache('id'));
-    $listData = ['title'=>input('title'), 'user_id'=>session('id')];
+    $listData = ['title'=>input('title'), 'user_id'=>cache('id')];
     $detailData = ['address'=>input('address'), 'free'=>input('free'), 'start_date'=>input('start_date'), 'end_date'=>input('end_date'),'apply_end_date'=>input('apply_end_date'), 'position'=>input('position'),'enter_number'=>input('enter_number'),'content'=>input('content')];
     $flag = false;
     if ($type == 'travel') {
