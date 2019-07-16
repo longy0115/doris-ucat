@@ -255,8 +255,8 @@ return [
 
     //微信测试账号
     'wx_info_test'          =>[
-        'appID'      => 'wx7de9ea94e853ff46',
-        'appsecret'  => '5261fbe01dedb5b8c98177954425d842',
+        'appID'      => 'wx31598ba55bb65990',
+        'appsecret'  => '5d565f3201c59dc71e3427136ca12a34',
         'token'      => 'weixintest'
     ],
     'wechat_config' => [
