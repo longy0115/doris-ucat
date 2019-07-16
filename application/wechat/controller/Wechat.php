@@ -25,12 +25,8 @@ class Wechat
         if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
-            $openid = cache('openid');
-            $temId= "vjDCEsAKgrVzSezGK9zZOH50V0MrWwaRKzcr4Ip7HNU";
-            $data=array(
-                'name'=>"long"
-            );
-            WechatService::sendTemplate($openid,$temId,$data);
+            ob_clean();
+            WechatService::serve();
         }
     }
 
