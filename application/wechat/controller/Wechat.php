@@ -33,6 +33,13 @@ class Wechat
         }
     }
 
+    //微信菜单
+    public function getMenu(){
+        $menu= WechatService::menuService();
+        $res=$menu->all();
+        halt($res);
+    }
+
     /**
      * 微信服务器  验证
      */
