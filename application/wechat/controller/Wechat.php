@@ -44,7 +44,7 @@ class Wechat
 
     // 删除菜单
     public function delMenu(){
-        $menu_id=input('id','');
+        $menu_id=input('id',null);
         $menu = WechatService::menuService();
         $res = $menu->destroy($menu_id);
         JsonService::successful('ok', $res);
