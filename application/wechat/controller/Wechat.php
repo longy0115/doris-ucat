@@ -3,6 +3,7 @@
 namespace app\wechat\controller;
 
 use service\WechatService;
+use service\JsonService;
 use think\Log;
 /**
  * 微信服务器  验证控制器
@@ -37,7 +38,8 @@ class Wechat
     public function getMenu(){
         $menu= WechatService::menuService();
         $res=$menu->all();
-        halt($res);
+
+        echo JsonService::successful('ok',$res);
     }
 
     // 发送模版消息
@@ -52,13 +54,14 @@ class Wechat
             'name' => "long"
         );
         $res=WechatService::sendTemplate($openid, $temId, $data);
-        halt($res);
+        echo JsonService::successful('ok', $res);
     }
 
     // 获取jssdk config
     public function getJssdk(){
-        $js= WechatService::jsSdk();
-        dump($js);
+        $res= WechatService::jsSdk();
+
+        echo JsonService::successful('ok', $res);
     }
 
     /**
