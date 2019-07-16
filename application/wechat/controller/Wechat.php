@@ -24,7 +24,15 @@ class Wechat
         if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
-            WechatService::serve();
+            $wechat = WechatService::application(true);
+            $wechat->setMessageHandler(function ($message) {
+                return "您好！欢迎关注我!";
+            });
+
+            $response = $wechat->server->serve();
+
+            // 将响应输出
+            exit($response->send()); 
         }
     }
 
