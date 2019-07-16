@@ -37,9 +37,46 @@ class Wechat
     //微信菜单
     public function getMenu(){
         $menu= WechatService::menuService();
-        $res=$menu->all();
+        $res=$menu->current();
 
-        echo JsonService::successful('ok',$res);
+        JsonService::successful('ok',$res);
+    }
+
+    // 删除菜单
+    public function delMenu(){
+        $menu_id=input('id','');
+        $menu = WechatService::menuService();
+        $res = $menu->destroy($menu_id);
+        JsonService::successful('ok', $res);
+    }
+
+    // 创建菜单
+    public function addMenu(){
+        $buttons = [
+            [
+                "type" => "click",
+                "name" => "今日歌曲",
+                "key"  => "V1001_TODAY_MUSIC"
+            ],
+            [
+                "name"       => "菜单",
+                "sub_button" => [
+                    [
+                        "type" => "view",
+                        "name" => "搜索",
+                        "url"  => "http://www.baidu.com/"
+                    ],
+                    [
+                        "type" => "view",
+                        "name" => "doris",
+                        "url"  => "http://doris.ucat.club/wechat/getMenu"
+                    ]
+                ],
+            ],
+        ];
+        $menu = WechatService::menuService();
+        $res = $menu->add($buttons);
+        JsonService::successful('ok', $res);
     }
 
     // 发送模版消息
@@ -54,14 +91,14 @@ class Wechat
             'name' => "long"
         );
         $res=WechatService::sendTemplate($openid, $temId, $data);
-        echo JsonService::successful('ok', $res);
+        JsonService::successful('ok', $res);
     }
 
     // 获取jssdk config
     public function getJssdk(){
         $res= WechatService::jsSdk();
 
-        echo JsonService::successful('ok', $res);
+        JsonService::successful('ok', $res);
     }
 
     /**
