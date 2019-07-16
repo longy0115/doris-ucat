@@ -26,9 +26,7 @@ class Wechat
             $this->valid();
         } else { //回复消息 其他操作
             ob_clean();
-            $wechat = WechatService::application(true);
-            $server = $wechat->server;
-            halt($server);
+            $wechat = WechatService::serve();
         }
     }
 
