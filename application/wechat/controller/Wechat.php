@@ -93,7 +93,8 @@ class Wechat
     // 获取jssdk config
     public function getJssdk(){
         $url=input('url');
-        $res= WechatService::jsSdk($url,true);
+        $debug=input('debug',false);
+        $res= WechatService::jsSdk($url,$debug);
         JsonService::successful('ok', $res);
     }
 
