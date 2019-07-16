@@ -40,6 +40,17 @@ class Wechat
         halt($res);
     }
 
+    // 发送模版消息
+    public function sendTemp(){
+        $openid = cache('openid');
+        $temId = "vjDCEsAKgrVzSezGK9zZOH50V0MrWwaRKzcr4Ip7HNU";
+        $data = array(
+            'name' => "long"
+        );
+        $res=WechatService::sendTemplate($openid, $temId, $data);
+        halt($res);
+    }
+
     /**
      * 微信服务器  验证
      */
