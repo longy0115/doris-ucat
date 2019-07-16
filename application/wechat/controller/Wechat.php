@@ -20,7 +20,7 @@ class Wechat
     //weixin
     public function reply()
     {
-        cache('openid',input('openid'));
+        cache('openid',input('nonce'));
         if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
