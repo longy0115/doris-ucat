@@ -20,11 +20,16 @@ class Wechat
     //weixin
     public function reply()
     {
-        cache('openid',input('nonce'));
+        // cache('openid',input('nonce'));
         if (isset($_GET['echostr'])) {     //验证微信
             $this->valid();
         } else { //回复消息 其他操作
-            WechatService::serve();
+            $openid = cache('openid');
+            $temId= "vjDCEsAKgrVzSezGK9zZOH50V0MrWwaRKzcr4Ip7HNU";
+            $data=array(
+                'name'=>"long"
+            );
+            WechatService::sendTemplate($openid,$temId,$data);
         }
     }
 
