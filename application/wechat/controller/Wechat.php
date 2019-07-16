@@ -25,6 +25,7 @@ class Wechat
             $this->valid();
         } else { //回复消息 其他操作
             $wechat = WechatService::application(true);
+            $wechat = $wechat->server;
             $wechat->setMessageHandler(function ($message) {
                 return "您好！欢迎关注我!";
             });
