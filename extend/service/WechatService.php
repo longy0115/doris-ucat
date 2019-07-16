@@ -406,7 +406,7 @@ class WechatService
         $jsService = self::jsService();
         if($url) $jsService->setUrl($url);
         try{
-            return $jsService->config($apiList,$debug,false,false);
+            return $jsService->config($apiList,$debug);
         }catch (\Exception $e){
             return '{}';
         }
