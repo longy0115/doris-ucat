@@ -14,7 +14,6 @@ class Wechat
 {
     public function index()
     {
-        echo cache('server');
         dump(121212);
             halt('微信测试');
     }
@@ -29,8 +28,7 @@ class Wechat
             ob_clean();
             $wechat = WechatService::application(true);
             $server = $wechat->server;
-            cache('server',$server);
-            exit('success');
+            halt($server);
         }
     }
 
