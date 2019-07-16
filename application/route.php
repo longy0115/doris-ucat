@@ -47,7 +47,9 @@ Route::post('register','Users/register');
 Route::get('wechat', 'wechat/Wechat/index');
 Route::get('reply', 'wechat/Wechat/reply'); //验证入口 
 Route::get('wechat/Wechat/reply', 'wechat/Wechat/reply'); //验证入口
-Route::get('wechat/getMenu', 'wechat/Wechat/getMenu'); //获取菜单
+Route::get('wechat/getMenu', 'wechat/Wechat/getMenu'); //获取菜单delMenu
+Route::get('wechat/delMenu', 'wechat/Wechat/delMenu'); //删除菜单
+Route::get('wechat/addMenu', 'wechat/Wechat/addMenu'); //添加菜单
 Route::get('wechat/sendTemp', 'wechat/Wechat/sendTemp'); //发送模版消息
 Route::get('wechat/getJssdk', 'wechat/Wechat/getJssdk');//getJssdk
 
