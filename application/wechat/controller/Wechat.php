@@ -14,35 +14,24 @@ class Wechat
 {
     public function index()
     {
-        echo cache('openid');
+        echo cache('server');
+        dump(121212);
             halt('微信测试');
     }
 
     //weixin
     public function reply()
     {
-        $app = WechatService::application(true);
-
-        // 从项目实例中得到服务端应用实例。
-        $server = $app->server;
-
-        $server->setMessageHandler(function ($message) {
-            // $message->FromUserName // 用户的 openid
-            // $message->MsgType // 消息类型：event, text....
-            return "您好！欢迎关注我!";
-        });
-
-        $response = $server->serve();
-
-        $response->send(); 
-
         // cache('openid',input('nonce'));
-        // if (isset($_GET['echostr'])) {     //验证微信
-        //     $this->valid();
-        // } else { //回复消息 其他操作
-        //     ob_clean();
-        //     WechatService::serve();
-        // }
+        if (isset($_GET['echostr'])) {     //验证微信
+            $this->valid();
+        } else { //回复消息 其他操作
+            ob_clean();
+            $wechat = WechatService::application(true);
+            $server = $wechat->server;
+            cache('server',$server);
+            exit('success');
+        }
     }
 
     //微信菜单
