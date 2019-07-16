@@ -48,6 +48,8 @@ Route::get('wechat', 'wechat/Wechat/index');
 Route::get('reply', 'wechat/Wechat/reply'); //验证入口 
 Route::get('wechat/Wechat/reply', 'wechat/Wechat/reply'); //验证入口
 Route::get('wechat/getMenu', 'wechat/Wechat/getMenu'); //获取菜单
-Route::get('wechat/sendTemp', 'wechat/Wechat/sendTemp');//发送模版消息
+Route::get('wechat/sendTemp', 'wechat/Wechat/sendTemp'); //发送模版消息
+Route::get('wechat/getJssdk', 'wechat/Wechat/getJssdk');//getJssdk
+
 
 

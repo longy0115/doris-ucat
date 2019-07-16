@@ -41,6 +41,10 @@ class Wechat
     }
 
     // 发送模版消息
+    /**
+     * openId 用户openid
+     * temId  公众号创建模版消息生成的模版id
+     */
     public function sendTemp(){
         $openid = cache('openid');
         $temId = "vjDCEsAKgrVzSezGK9zZOH50V0MrWwaRKzcr4Ip7HNU";
@@ -49,6 +53,12 @@ class Wechat
         );
         $res=WechatService::sendTemplate($openid, $temId, $data);
         halt($res);
+    }
+
+    // 获取jssdk config
+    public function getJssdk(){
+        $js= WechatService::jsSdk();
+        dump($js);
     }
 
     /**
