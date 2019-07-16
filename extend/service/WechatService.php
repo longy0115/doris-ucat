@@ -400,13 +400,13 @@ class WechatService
         return self::application()->js;
     }
 
-    public static function jsSdk($url = '')
+    public static function jsSdk($url = '',$debug=false)
     {
         $apiList = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'onMenuShareQQ', 'onMenuShareWeibo', 'onMenuShareQZone', 'startRecord', 'stopRecord', 'onVoiceRecordEnd', 'playVoice', 'pauseVoice', 'stopVoice', 'onVoicePlayEnd', 'uploadVoice', 'downloadVoice', 'chooseImage', 'previewImage', 'uploadImage', 'downloadImage', 'translateVoice', 'getNetworkType', 'openLocation', 'getLocation', 'hideOptionMenu', 'showOptionMenu', 'hideMenuItems', 'showMenuItems', 'hideAllNonBaseMenuItem', 'showAllNonBaseMenuItem', 'closeWindow', 'scanQRCode', 'chooseWXPay', 'openProductSpecificView', 'addCard', 'chooseCard', 'openCard'];
         $jsService = self::jsService();
         if($url) $jsService->setUrl($url);
         try{
-            return $jsService->config($apiList);
+            return $jsService->config($apiList,$debug);
         }catch (\Exception $e){
             return '{}';
         }

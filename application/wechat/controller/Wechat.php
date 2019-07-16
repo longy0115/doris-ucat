@@ -92,7 +92,7 @@ class Wechat
 
     // 获取jssdk config
     public function getJssdk(){
-        $res= WechatService::jsSdk();
+        $res= WechatService::jsSdk('',true);
         JsonService::successful('ok', $res);
     }
 
@@ -117,7 +117,7 @@ class Wechat
         $timestamp = input("timestamp");
         $nonce = input("nonce");
         
-        $token = config('wx_info_test.token');
+        $token = config('wechat_config.token');
         $tmpArr =array($timestamp, $nonce, $token);
         sort($tmpArr, SORT_STRING);
         $tmpStr = implode($tmpArr);
