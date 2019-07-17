@@ -90,6 +90,11 @@ class Wechat
     }
 
     // 获取jssdk config
+    /**
+     * url 前端使用url
+     * debug 定义是否打开
+     * apis 自定义jssdk接口列表
+     */
     public function getJssdk(){
         $url=input('url');
         $debug=input('debug',false);
