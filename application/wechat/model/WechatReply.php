@@ -13,6 +13,8 @@ use service\HookService;
 use service\UtilService;
 use service\WechatService;
 use think\Url;
+use think\Log;
+use function GuzzleHttp\json_encode;
 
 /**
  * 关键字 model
@@ -185,12 +187,14 @@ class WechatReply extends ModelBasic
      */
     public static function reply($key,$default=''){
         $res = self::where('key',$key)->where('status','1')->find();
+        Log::info('reply_res===>' . json_encode($res));
         if(empty($res)) $res = self::where('key','default')->where('status','1')->find();
         if(empty($res)){
             return WechatService::textMessage($default);
         }
         $res['data'] = json_decode($res['data'],true);
         if($res['type'] == 'text'){
+            Log::info('reply_res===>'.json_encode($res));
             return WechatService::textMessage($res['data']['content']);
         }else if($res['type'] == 'image'){
             return WechatService::imageMessage($res['data']['media_id']);
