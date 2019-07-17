@@ -22,7 +22,7 @@ class WapException extends Handle
 
         //可以在此交由系统处理
 //        if(Request::instance()->get('_debug_info') == 'true')
-            return parent::render($e);
+//            return parent::render($e);
 
         // 参数验证错误
         if ($e instanceof ValidateException) {
