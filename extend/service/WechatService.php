@@ -56,7 +56,7 @@ class WechatService
         $server->setMessageHandler(function ($message) {
             // $message->FromUserName // 用户的 openid
             // $message->MsgType // 消息类型：event, text....
-            return "您好！欢迎关注我!";
+            return WechatService::textMessage('hello nihao');
         });
         $response = $server->serve();
         Log::info('日志信息end-----------'.$response->getContent());
