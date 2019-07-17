@@ -29,7 +29,7 @@ class MessageBehavior
     public static function wechatMessageBefore($message)
     {
         WechatUser::saveUser($message->FromUserName);
-
+        Log::info('wechatMessageBefore------' . json_encode($message));
         $event = isset($message->Event) ?
             $message->MsgType.(
             $message->Event == 'subscribe' && isset($message->EventKey) ? '_scan' : ''

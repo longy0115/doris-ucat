@@ -8,11 +8,11 @@
 namespace app\wechat\model;
 
 use basic\ModelBasic;
-use service\UtilService;
 use service\WechatService;
 use service\CacheService as Cache;
-use think\Session;
 use traits\ModelTrait;
+use think\Log;
+use function GuzzleHttp\json_encode;
 
 class WechatUser extends ModelBasic
 {
@@ -33,19 +33,17 @@ class WechatUser extends ModelBasic
     public static function setNewUser($openid)
     {
         $userInfo = WechatService::getUserInfo($openid);
-        Cache::set('user_info',$userInfo);
+        Log::info('setNewUseruserInfo------'.json_encode($userInfo));
         if(!isset($userInfo['subscribe']) || !$userInfo['subscribe'] || !isset($userInfo['openid']))
-            exception('请关注公众号!');
+            // exception('请关注公众号!');
+            Log::info('setNewUser------请关注公众号');
         $userInfo['tagid_list'] = implode(',',$userInfo['tagid_list']);
         self::beginTrans();
         $wechatUser = self::set($userInfo);
         if(!$wechatUser){
             self::rollbackTrans();
-            exception('用户储存失败!');
-        }
-        if(!User::setWechatUser($wechatUser)){
-            self::rollbackTrans();
-            exception('用户信息储存失败!');
+            // exception('用户储存失败!');
+            Log::info('setNewUser------用户储存失败');
         }
         self::commitTrans();
         return $wechatUser;
