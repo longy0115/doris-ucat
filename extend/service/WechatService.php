@@ -52,7 +52,12 @@ class WechatService
         Log::info('日志信息start-----------');
         $wechat = self::application(true);
         $server = $wechat->server;
-        self::hook($server);
+        // self::hook($server);
+        $server->setMessageHandler(function ($message) {
+            // $message->FromUserName // 用户的 openid
+            // $message->MsgType // 消息类型：event, text....
+            return "您好！欢迎关注我!";
+        });
         $response = $server->serve();
         Log::info('日志信息end-----------'.$response->getContent());
         exit($response->getContent());
