@@ -11,6 +11,8 @@ use think\Cache;
 use traits\ModelTrait;
 use basic\ModelBasic;
 use app\wechat\model\WechatUser as UserModel;
+use think\Log;
+use function GuzzleHttp\json_encode;
 
 /**
  * 微信用户行为记录  model
@@ -52,6 +54,7 @@ class WechatMessage extends ModelBasic
     public static function setMessage($result,$openid,$type)
     {
         $data = compact('result','openid','type');
+        Log::info('set_mess_data',json_encode($data));
         return self::set($data);
     }
 
