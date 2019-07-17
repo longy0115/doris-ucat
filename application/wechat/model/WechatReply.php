@@ -13,7 +13,6 @@ use service\HookService;
 use service\UtilService;
 use service\WechatService;
 use think\Url;
-use think\Log;
 use function GuzzleHttp\json_encode;
 
 /**
@@ -185,16 +184,13 @@ class WechatReply extends ModelBasic
      * @param string $default
      * @return array|\EasyWeChat\Message\Image|\EasyWeChat\Message\News|\EasyWeChat\Message\Text|\EasyWeChat\Message\Voice
      */
-    public static function reply($key,$default=''){
+    public static function reply($key,$default= 'Welcome to my nest!'){
         $res = self::where('key',$key)->where('status','1')->find();
-        Log::info('reply_res===>' . json_encode($res));
         if(empty($res)) $res = self::where('key','default')->where('status','1')->find();
         if(empty($res)){
-            Log::info('reply_res_default===>' . json_encode($res));
             return WechatService::textMessage($default);
         }
         $res['data'] = json_decode($res['data'],true);
-        Log::info('reply_res_type===>' . json_encode($res));
         if($res['type'] == 'text'){
             return WechatService::textMessage($res['data']['content']);
         }else if($res['type'] == 'image'){

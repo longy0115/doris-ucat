@@ -12,7 +12,6 @@ use app\wechat\model\WechatMessage;
 use app\wechat\model\WechatUser;
 use service\HookService;
 use service\QrcodeService;
-use think\Log;
 use function GuzzleHttp\json_encode;
 
 /**
@@ -29,7 +28,6 @@ class MessageBehavior
     public static function wechatMessageBefore($message)
     {
         WechatUser::saveUser($message->FromUserName);
-        Log::info('wechatMessageBefore------' . json_encode($message));
         $event = isset($message->Event) ?
             $message->MsgType.(
             $message->Event == 'subscribe' && isset($message->EventKey) ? '_scan' : ''
