@@ -28,7 +28,6 @@ class MessageBehavior
      */
     public static function wechatMessageBefore($message)
     {
-        Log:info('wechat_message',json_encode($message));
         WechatUser::saveUser($message->FromUserName);
 
         $event = isset($message->Event) ?

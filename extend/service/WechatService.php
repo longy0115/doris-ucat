@@ -20,6 +20,7 @@ use EasyWeChat\Payment\Order;
 use EasyWeChat\Server\Guard;
 use think\Url;
 use think\Log;
+use function GuzzleHttp\json_encode;
 
 class WechatService
 {
@@ -66,7 +67,7 @@ class WechatService
         $server->setMessageHandler(function($message){
             $behavior = MessageBehavior::class;
             HookService::beforeListen('wechat_message',$message,null,true,$behavior);
-            Log::info('MsgType------'. $message->MsgType);
+            Log::info('wechat_message------'.json_encode($message));
             switch ($message->MsgType){
                 case 'event':
                     switch (strtolower($message->Event)){
