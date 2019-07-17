@@ -190,11 +190,12 @@ class WechatReply extends ModelBasic
         Log::info('reply_res===>' . json_encode($res));
         if(empty($res)) $res = self::where('key','default')->where('status','1')->find();
         if(empty($res)){
+            Log::info('reply_res_default===>' . json_encode($res));
             return WechatService::textMessage($default);
         }
         $res['data'] = json_decode($res['data'],true);
+        Log::info('reply_res_type===>' . json_encode($res));
         if($res['type'] == 'text'){
-            Log::info('reply_res===>'.json_encode($res));
             return WechatService::textMessage($res['data']['content']);
         }else if($res['type'] == 'image'){
             return WechatService::imageMessage($res['data']['media_id']);
