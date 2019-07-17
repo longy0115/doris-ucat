@@ -4,7 +4,6 @@ namespace app\wechat\controller;
 
 use service\WechatService;
 use service\JsonService;
-use think\Log;
 /**
  * 微信服务器  验证控制器
  * Class Wechat
@@ -26,7 +25,7 @@ class Wechat
             $this->valid();
         } else { //回复消息 其他操作
             ob_clean();
-            $wechat = WechatService::serve();
+            WechatService::serve();
         }
     }
 
