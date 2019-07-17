@@ -7,6 +7,7 @@
 
 namespace service;
 
+use app\wechat\wechat\WechatMessage;
 use behavior\wechat\MessageBehavior;
 use EasyWeChat\Foundation\Application;
 use EasyWeChat\Message\Article;
@@ -28,14 +29,6 @@ class WechatService
 
     public static function options()
     {
-        // $config = [
-        //     'app_id' => config('wechat_config.app_id'),
-        //     'secret' => config('wechat_config.secret'),
-        //     'token' => config('wechat_config.token'),
-        //     'guzzle' => [
-        //         'timeout' => 10.0, // 超时时间（秒）
-        //     ],
-        // ];
         return config('wechat_config');
     }
 
@@ -52,12 +45,7 @@ class WechatService
         Log::info('日志信息start-----------');
         $wechat = self::application(true);
         $server = $wechat->server;
-        // self::hook($server);
-        $server->setMessageHandler(function ($message) {
-            // $message->FromUserName // 用户的 openid
-            // $message->MsgType // 消息类型：event, text....
-            return WechatService::textMessage('hello nihao');
-        });
+        self::hook($server);
         $response = $server->serve();
         Log::info('日志信息end-----------'.$response->getContent());
         exit($response->getContent());
