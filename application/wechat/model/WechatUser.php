@@ -33,6 +33,7 @@ class WechatUser extends ModelBasic
     public static function setNewUser($openid)
     {
         $userInfo = WechatService::getUserInfo($openid);
+        Cache::set('user_info',$userInfo);
         if(!isset($userInfo['subscribe']) || !$userInfo['subscribe'] || !isset($userInfo['openid']))
             exception('请关注公众号!');
         $userInfo['tagid_list'] = implode(',',$userInfo['tagid_list']);

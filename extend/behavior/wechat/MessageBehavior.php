@@ -12,6 +12,8 @@ use app\wechat\model\WechatMessage;
 use app\wechat\model\WechatUser;
 use service\HookService;
 use service\QrcodeService;
+use think\Log;
+use function GuzzleHttp\json_encode;
 
 /**
  * 用户消息行为
@@ -26,6 +28,7 @@ class MessageBehavior
      */
     public static function wechatMessageBefore($message)
     {
+        Log:info('wechat_message',json_encode($message));
         WechatUser::saveUser($message->FromUserName);
 
         $event = isset($message->Event) ?
