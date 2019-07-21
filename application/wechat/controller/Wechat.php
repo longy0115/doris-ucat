@@ -4,6 +4,7 @@ namespace app\wechat\controller;
 
 use service\WechatService;
 use service\JsonService;
+use service\CacheService;
 /**
  * 微信服务器  验证控制器
  * Class Wechat
@@ -14,7 +15,11 @@ class Wechat
     public function index()
     {
         dump(UPLOAD_PATH);
-            halt('微信测试');
+        echo '<br>';
+        echo CacheService::get('mid');
+        echo '<br>';
+        echo WechatService::uploadDir('wechat/images');
+        halt('微信测试');
     }
 
     //weixin
@@ -110,6 +115,7 @@ class Wechat
      */
     public function getMaterial(){
         $materialId=input('mid','');
+        CacheService::set('mid', $materialId);
         $res=WechatService::getMaterial($materialId);
         JsonService::successful('ok', $res);
     }
