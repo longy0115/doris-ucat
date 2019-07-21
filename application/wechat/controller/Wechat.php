@@ -14,11 +14,10 @@ class Wechat
 {
     public function index()
     {
-        dump(UPLOAD_PATH);
+        // dump(UPLOAD_PATH);
         echo '<br>';
-        echo CacheService::get('mid');
-        echo '<br>';
-        echo WechatService::uploadDir('wechat/images');
+        $savename = date('Ymd') . DS . md5(microtime(true));
+        dump($savename);
         halt('微信测试');
     }
 
@@ -115,7 +114,7 @@ class Wechat
      */
     public function getMaterial(){
         $materialId=input('mid','');
-        CacheService::set('mid', $materialId);
+        // CacheService::set('mid', $materialId);
         $res=WechatService::getMaterial($materialId);
         JsonService::successful('ok', $res);
     }
