@@ -148,11 +148,24 @@ class WechatService
     }
 
     /**
+     * 生成上传文件目录
+     * @param $path
+     * @param null $root
+     * @return string
+     */
+    protected static function uploadDir($path, $root = null)
+    {
+        if ($root === null) $root = UPLOAD_PATH;
+        return $root . DS . $path;
+    }
+
+    /**
      * 获取临时素材接口
      * mediaId 媒体文件ID
      */
-    public static function getMaterial($mediaId='',$directory, $filename = ''){
+    public static function getMaterial($mediaId='',$filename = ''){
         $materialService =self::materialTemporaryService();
+        $directory=self::uploadDir('wechat/images');
         return $materialService->download($mediaId ,$directory, $filename);
     }
 
