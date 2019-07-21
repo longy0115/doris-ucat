@@ -156,7 +156,7 @@ class WechatService
     public static function uploadDir($path, $root = null)
     {
         if ($root === null) $root = UPLOAD_PATH;
-        return $root . DS . $path;
+        return $root.$path;
     }
 
     /**
@@ -177,12 +177,12 @@ class WechatService
     public static function getMaterial($mediaId='',$filename = ''){
         $materialService =self::materialTemporaryService();
         $directory=self::uploadDir('wechat/images/');
-        $directory.=date('Ymd') . DS;
+        $directory.=date('Ymd');
         // if (!self::validDir($directory)) return self::setError('生成上传目录失败,请检查权限!');
         self::validDir($directory);
         if(empty($filename)) $filename= md5(microtime(true));
         $name=$materialService->download($mediaId ,$directory, $filename);
-        return $directory.'/'. $name;
+        return '/public/wechat/images/'. date('Ymd'). $name;
     }
 
     /**
