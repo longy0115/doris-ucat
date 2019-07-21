@@ -153,7 +153,7 @@ class WechatService
      * @param null $root
      * @return string
      */
-    protected static function uploadDir($path, $root = null)
+    public static function uploadDir($path, $root = null)
     {
         if ($root === null) $root = UPLOAD_PATH;
         return $root . DS . $path;
