@@ -14,7 +14,7 @@ class Wechat
 {
     public function index()
     {
-        dump(UPLOAD_PATH);
+        // dump(UPLOAD_PATH);
         echo '<br>';
         $savename = date('Ymd') . DS . md5(microtime(true));
         dump($savename);
