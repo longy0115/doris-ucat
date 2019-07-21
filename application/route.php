@@ -51,7 +51,8 @@ Route::get('wechat/getMenu', 'wechat/Wechat/getMenu'); //获取菜单delMenu
 Route::get('wechat/delMenu', 'wechat/Wechat/delMenu'); //删除菜单
 Route::post('wechat/addMenu', 'wechat/Wechat/addMenu'); //添加菜单
 Route::get('wechat/sendTemp', 'wechat/Wechat/sendTemp'); //发送模版消息
-Route::get('wechat/getJssdk', 'wechat/Wechat/getJssdk');//getJssdk
+Route::get('wechat/getJssdk', 'wechat/Wechat/getJssdk'); //getJssdk
+Route::get('wechat/getMaterial', 'wechat/Wechat/getMaterial');//获取素材接口
 
 
 

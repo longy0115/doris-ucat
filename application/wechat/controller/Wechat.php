@@ -13,7 +13,7 @@ class Wechat
 {
     public function index()
     {
-        dump(121212);
+        dump(UPLOAD_PATH);
             halt('微信测试');
     }
 
@@ -101,6 +101,16 @@ class Wechat
         $apis=input('apis','');
         $apiList=$apis?explode(',',$apis):[];
         $res= WechatService::jsSdk($url,$apiList,$debug);
+        JsonService::successful('ok', $res);
+    }
+
+    /**
+     * 下载素材并保存到服务器
+     * 返回 地址
+     */
+    public function getMaterial(){
+        $materialId=input('mid','');
+        $res=WechatService::getMaterial($materialId);
         JsonService::successful('ok', $res);
     }
 

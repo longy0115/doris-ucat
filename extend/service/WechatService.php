@@ -148,6 +148,15 @@ class WechatService
     }
 
     /**
+     * 获取临时素材接口
+     * mediaId 媒体文件ID
+     */
+    public static function getMaterial($mediaId='',$directory, $filename = ''){
+        $materialService =self::materialTemporaryService();
+        return $materialService->download($mediaId ,$directory, $filename);
+    }
+
+    /**
      * 用户接口
      * @return \EasyWeChat\User\User
      */
