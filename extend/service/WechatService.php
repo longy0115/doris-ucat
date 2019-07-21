@@ -160,12 +160,27 @@ class WechatService
     }
 
     /**
+     * 检查上传目录不存在则生成
+     * @param $dir
+     * @return bool
+     */
+    protected static function validDir($dir)
+    {
+        return is_dir($dir) == true || mkdir($dir, 0777, true) == true;
+    }
+
+
+    /**
      * 获取临时素材接口
      * mediaId 媒体文件ID
      */
     public static function getMaterial($mediaId='',$filename = ''){
         $materialService =self::materialTemporaryService();
-        $directory=self::uploadDir('wechat/images');
+        $directory=self::uploadDir('wechat/images/');
+        $directory.=date('Ymd') . DS;
+        // if (!self::validDir($directory)) return self::setError('生成上传目录失败,请检查权限!');
+        self::validDir($directory);
+        if(empty($filename)) $filename= md5(microtime(true));
         $name=$materialService->download($mediaId ,$directory, $filename);
         return $directory.'/'. $name;
     }
