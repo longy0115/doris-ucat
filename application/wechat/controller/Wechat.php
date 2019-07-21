@@ -115,7 +115,7 @@ class Wechat
      */
     public function getMaterial(){
         $materialId=input('mid','');
-        CacheService::set('mid', $materialId);
+        // CacheService::set('mid', $materialId);
         $res=WechatService::getMaterial($materialId);
         JsonService::successful('ok', $res);
     }

@@ -166,7 +166,8 @@ class WechatService
     public static function getMaterial($mediaId='',$filename = ''){
         $materialService =self::materialTemporaryService();
         $directory=self::uploadDir('wechat/images');
-        return $materialService->download($mediaId ,$directory, $filename);
+        $name=$materialService->download($mediaId ,$directory, $filename);
+        return $directory.'/'. $name;
     }
 
     /**
